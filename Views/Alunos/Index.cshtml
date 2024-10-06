@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Visualizar Alunos";
+}
+
+<link rel="stylesheet" href="~/css/alunos/index.css" asp-append-version="true" />
+@model IEnumerable<CadastroEscola.Models.Aluno>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<h1>Lista de Alunos <a asp-action="CreateOrEdit">+</a></h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Turma</th>
+            <th>Data de Nascimento</th>
+            <th>Gênero</th>
+            <th>CPF</th>
+            <th>RG</th>
+            <th>Telefone</th>
+            <th>Bairro</th>
+            <th>Rua e Número</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var aluno in Model)
+        {
+            <tr>
+                <td>@aluno.ID</td>
+                <td>@aluno.Nome</td>
+                <td>@aluno.TurmaID</td>
+                <td>@aluno.DataNascimento.ToString("dd/MM/yyyy")</td>
+                <td>@aluno.Genero</td>
+                <td>@aluno.CPF</td>
+                <td>@aluno.RG</td>
+                <td>@aluno.Telefone</td>
+                <td>@aluno.Bairro</td>
+                <td>@aluno.RuaNumero</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="CreateOrEdit" asp-route-id="@aluno.ID">Editar</a> |
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal" data-id="@aluno.ID" data-nome="@aluno.Nome">Excluir</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal para confirmação de exclusão -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirmar Exclusão</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir o aluno <strong id="modal-aluno-nome"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form id="deleteForm" method="post" asp-action="DeleteConfirmed" style="display:inline">
+                    <input type="hidden" name="id" id="alunoId" />
+                    <button type="submit" class="btn btn-danger">Excluir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#deleteConfirmationModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Botão que acionou o modal
+        var alunoId = button.data('id'); // Extrai o id do aluno
+        var alunoNome = button.data('nome'); // Extrai o nome do aluno
+
+        var modal = $(this);
+        modal.find('#modal-aluno-nome').text(alunoNome); // Define o nome no modal
+        modal.find('#alunoId').val(alunoId); // Define o id no input hidden
+    });
+</script>

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- Conteúdo Principal -->
+        <div class="col-md-6">
+            @model IEnumerable<CadastroEscola.Models.Aluno>
+
+            <h1>Bem-vindo ao Cadastro de Alunos e Escola!</h1>
+
+            <p>Esta aplicação permite gerenciar informações sobre alunos e turmas de maneira simples e eficiente.</p>
+
+            <h3>O que você pode fazer:</h3>
+            <ul class="list-unstyled">
+                <li>📚 <strong>Visualizar as Turmas:</strong> Confira todas as turmas cadastradas na escola.</li>
+                <li>📝 <strong>Cadastrar Turmas:</strong> Adicione novas turmas ao sistema facilmente.</li>
+                <li>👩‍🎓 <strong>Visualizar os Alunos:</strong> Veja todos os alunos matriculados.</li>
+                <li>🧑‍🎓 <strong>Cadastrar Alunos:</strong> Registre novos alunos na aplicação.</li>
+            </ul>
+        </div>
+
+        <!-- Seção de Login e Cadastro -->
+        <div class="col-md-6">
+            <img src="~/css/escolaBoasVindas.jpg" alt="Imagem Boas Vindas" style="border-radius: 15px;">
+        </div>
+    </div>
+</div>
+
+<style>
+    .imagem-boas-vindas {
+        border-radius: 15px; /* Ajuste o valor conforme necessário */
+    }
+</style>
