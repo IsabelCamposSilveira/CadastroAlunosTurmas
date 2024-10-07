@@ -1,6 +1,6 @@
 public enum Turno
 {
-    Manha,
+    Manhã,
     Tarde,
     Noite
 }
