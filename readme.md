@@ -36,8 +36,15 @@ Altere o arquivo `appsettings.json` para inserir as conexões com o banco de dad
    dotnet run
 3. Abra o link no navegador e utilize a aplicação.
 
-### Prints das Telas
+### Prints de algumas Telas
 
+![image](https://github.com/user-attachments/assets/3b5ccebe-17d7-4288-9b56-b43da56b5eef)
+
+![image](https://github.com/user-attachments/assets/fe786455-6ccb-4ce0-a576-29c4322d994d)
+
+![image](https://github.com/user-attachments/assets/c1fbf004-f615-4247-8dbf-b2e300a82410)
+
+![image](https://github.com/user-attachments/assets/af4a4429-875c-4087-a1a4-9406d0c335db)
 
 
 ### Contribuições
